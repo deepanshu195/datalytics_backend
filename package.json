@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.875.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express.js": "^1.0.0",

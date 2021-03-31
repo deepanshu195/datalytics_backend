@@ -2,6 +2,12 @@ module.exports = {
   db: {
     urls: "mongodb://root:password@localhost:27019/datalytics",
     url: "mongodb://root:password@localhost:27019/stepper?authSource=admin",
+    dynamoConfig: {
+      region: "us-west-2",
+      accessKeyId: "DUMMYIDEXAMPLE",
+      secretAccessKey: "DUMMYEXAMPLEKEY",
+      endpoint: "http://localhost:8000",
+    },
   },
   google_Cred: {
     Client_ID:

@@ -1,19 +1,48 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const { createTable, scanWholeTable } = require("../../dbRepository/dal");
 
-var roleSchema = new Schema({
-  roleName: {
-    type: String,
-    required: true,
+var stepperDbSchema = [
+  {
+    TableName: "roles",
+    KeySchema: [
+      { AttributeName: "roleName", KeyType: "HASH" }, //Partition key
+    ],
+    AttributeDefinitions: [{ AttributeName: "roleName", AttributeType: "S" }],
+    ProvisionedThroughput: {
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5,
+    },
   },
-});
-
-var departmentSchema = new Schema({
-  departmentName: {
-    type: String,
-    required: true,
+  {
+    TableName: "departments",
+    KeySchema: [
+      { AttributeName: "deptName", KeyType: "HASH" }, //Partition key
+    ],
+    AttributeDefinitions: [{ AttributeName: "deptName", AttributeType: "S" }],
+    ProvisionedThroughput: {
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5,
+    },
   },
-});
+];
 
-exports.departmentModel = mongoose.model("department", departmentSchema);
-exports.roleModel = mongoose.model("role", roleSchema);
+(function bootStrapDB() {
+  createTable(stepperDbSchema);
+})();
+
+exports.getRoles = function (callback) {
+  let params = {
+    TableName: "roles",
+    ProjectionExpression: "roleName",
+  };
+
+  scanWholeTable(params, callback);
+};
+
+exports.getDepartments = function (callback) {
+  let params = {
+    TableName: "departments",
+    ProjectionExpression: "deptName",
+  };
+
+  scanWholeTable(params, callback);
+};

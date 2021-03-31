@@ -1,5 +1,5 @@
-import axios from "axios";
-import config from "../../config/config";
+const axios = require("axios");
+const config = require("../../config/config");
 
 exports.getGithubCreds = function (req, res) {
   axios

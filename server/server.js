@@ -5,9 +5,9 @@ const cors = require("cors");
 const api = require("./api/api");
 var app = express();
 
-require("mongoose").connect(config.db.url, {
-  useNewUrlParser: true,
-});
+// require("mongoose").connect(config.db.url, {
+//   useNewUrlParser: true,
+// });
 
 // Adding Middleware
 app.use(cors());
