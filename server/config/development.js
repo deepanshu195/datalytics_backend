@@ -6,7 +6,7 @@ module.exports = {
       region: "us-west-2",
       accessKeyId: "DUMMYIDEXAMPLE",
       secretAccessKey: "DUMMYEXAMPLEKEY",
-      endpoint: "http://localhost:8000",
+      endpoint: "http://dynamodb-local:8000",
     },
   },
   google_Cred: {

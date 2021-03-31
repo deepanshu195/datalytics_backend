@@ -1,6 +1,6 @@
-const config = require("./Server/config/config");
+const config = require("./server/config/config");
 require("./server/dbRepository/dbInstance");
-const app = require("./Server/server");
+const app = require("./server/server");
 
 console.log(config);
 
